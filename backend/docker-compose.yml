@@ -1,0 +1,171 @@
+services:
+  # ==========================================
+  # Redis Cache & Session Store
+  # ==========================================
+  redis:
+    image: redis:7-alpine
+    container_name: fresherai-backend-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - backend-network
+
+  # ==========================================
+  # Auth Service
+  # ==========================================
+  auth-service:
+    build:
+      context: .
+      dockerfile: services/auth/Dockerfile
+    container_name: fresherai-backend-auth
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./services/auth/.env
+    environment:
+      - PORT=8001
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - backend-network
+
+  # ==========================================
+  # Resume Service
+  # ==========================================
+  resume-service:
+    build:
+      context: .
+      dockerfile: services/resume/Dockerfile
+    container_name: fresherai-backend-resume
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    env_file:
+      - ./services/resume/.env
+    environment:
+      - PORT=8002
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - backend-network
+
+  # ==========================================
+  # Interview Service
+  # ==========================================
+  interview-service:
+    build:
+      context: .
+      dockerfile: services/interview/Dockerfile
+    container_name: fresherai-backend-interview
+    restart: unless-stopped
+    ports:
+      - "8003:8003"
+    env_file:
+      - ./services/interview/.env
+    environment:
+      - PORT=8003
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - backend-network
+
+  # ==========================================
+  # Roadmap Service
+  # ==========================================
+  roadmap-service:
+    build:
+      context: .
+      dockerfile: services/roadmap/Dockerfile
+    container_name: fresherai-backend-roadmap
+    restart: unless-stopped
+    ports:
+      - "8004:8004"
+    env_file:
+      - ./services/roadmap/.env
+    environment:
+      - PORT=8004
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - backend-network
+
+  # ==========================================
+  # Billing Service
+  # ==========================================
+  billing-service:
+    build:
+      context: .
+      dockerfile: services/billing/Dockerfile
+    container_name: fresherai-backend-billing
+    restart: unless-stopped
+    ports:
+      - "8005:8005"
+    env_file:
+      - ./services/billing/.env
+    environment:
+      - PORT=8005
+    networks:
+      - backend-network
+
+  # ==========================================
+  # API Gateway
+  # ==========================================
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: fresherai-backend-gateway
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./gateway/.env
+    environment:
+      - PORT=8000
+      - REDIS_URL=redis://redis:6379
+      - AUTH_SERVICE_URL=http://auth-service:8001
+      - RESUME_SERVICE_URL=http://resume-service:8002
+      - INTERVIEW_SERVICE_URL=http://interview-service:8003
+      - ROADMAP_SERVICE_URL=http://roadmap-service:8004
+      - BILLING_SERVICE_URL=http://billing-service:8005
+      - FRONTEND_URL=http://localhost:5173
+    depends_on:
+      redis:
+        condition: service_healthy
+      auth-service:
+        condition: service_started
+      resume-service:
+        condition: service_started
+      interview-service:
+        condition: service_started
+      roadmap-service:
+        condition: service_started
+      billing-service:
+        condition: service_started
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local
