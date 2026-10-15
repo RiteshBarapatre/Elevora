@@ -11,44 +11,52 @@ From resume analysis to interview practice and skill development, Elevora helps 
 ## ✨ Features
 
 ### 📄 AI Resume Analyzer
+
 - Upload resumes in PDF format.
 - Extract resume content for AI-powered analysis.
 - Receive ATS-style scores and actionable improvement suggestions.
 - Identify missing skills and opportunities to improve resume quality.
 
 ### 📝 Resume Builder
+
 - Create and organize professional resumes.
 - Prepare resume content for job applications.
 - Generate print-ready resume documents.
 
 ### 🎯 AI Mock Interviews
+
 - Practice interviews based on your selected technology stack.
 - Generate relevant technical interview questions.
 - Receive AI-powered feedback and answer evaluations.
 - Improve your interview preparation through structured practice.
 
 ### 🗺️ Personalized Learning Roadmaps
+
 - Generate learning roadmaps based on your chosen technology stack.
 - Identify missing skills and knowledge gaps.
 - Get structured recommendations for what to learn next.
 
 ### 🔐 Authentication and Account Management
+
 - Support authentication through configured Firebase and email OTP flows.
 - Handle authenticated requests using backend authentication and cookie-based mechanisms.
 - Protect application resources through server-side verification and authorization.
 
 ### 💳 Credit-Based Monetization
+
 - Use a credit-based model for supported AI features.
 - Integrate Razorpay for purchasing additional credits.
 - Manage payment records and credit allocation through backend services.
 
 ### 📊 Interactive User Interface
+
 - Responsive, modern UI built with React and Tailwind CSS.
 - Animated interactions and transitions.
 - Charts and visual representations for supported analytics.
 - Toast notifications and intuitive navigation.
 
 ### ⚡ Performance and Scalability
+
 - Redis integration for caching and fast data access.
 - Microservices architecture for separating application responsibilities.
 - Docker and Docker Compose for containerized development and deployment.
@@ -58,50 +66,54 @@ From resume analysis to interview practice and skill development, Elevora helps 
 ## 🛠️ Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|---|---|
-| React 19 | Component-based UI development |
-| Vite 8 | Development server and production build |
-| JavaScript (ES Modules) | Application logic |
-| Tailwind CSS 4 | Responsive UI styling |
-| Redux Toolkit | Global state management |
-| React Router | Client-side routing |
-| Axios | HTTP requests |
-| Firebase SDK | Frontend Firebase integration |
-| Motion | UI animations |
-| Recharts | Data visualization |
-| React Icons | Icons |
-| Monaco Editor | Embedded code editor |
-| React Toastify | Notifications |
-| React Circular Progressbar | Circular progress indicators |
-| React To Print | Printing React-rendered content |
+
+| Technology                 | Purpose                                 |
+| -------------------------- | --------------------------------------- |
+| React 19                   | Component-based UI development          |
+| Vite 8                     | Development server and production build |
+| JavaScript (ES Modules)    | Application logic                       |
+| Tailwind CSS 4             | Responsive UI styling                   |
+| Redux Toolkit              | Global state management                 |
+| React Router               | Client-side routing                     |
+| Axios                      | HTTP requests                           |
+| Firebase SDK               | Frontend Firebase integration           |
+| Motion                     | UI animations                           |
+| Recharts                   | Data visualization                      |
+| React Icons                | Icons                                   |
+| Monaco Editor              | Embedded code editor                    |
+| React Toastify             | Notifications                           |
+| React Circular Progressbar | Circular progress indicators            |
+| React To Print             | Printing React-rendered content         |
 
 ### Backend
-| Technology | Purpose |
-|---|---|
-| Node.js | JavaScript runtime |
-| Express 5 | REST APIs and service endpoints |
-| MongoDB | Persistent data storage |
-| Mongoose 9 | MongoDB schemas and data modeling |
-| Redis | Caching and fast data access |
-| ioredis | Redis client for Node.js |
-| Firebase Admin SDK | Server-side Firebase operations |
-| Axios | Inter-service HTTP communication |
-| Nodemailer | Email delivery |
-| Multer | File upload handling |
-| pdf-parse | PDF text extraction |
-| Razorpay | Payment integration |
-| dotenv | Environment configuration |
+
+| Technology         | Purpose                           |
+| ------------------ | --------------------------------- |
+| Node.js            | JavaScript runtime                |
+| Express 5          | REST APIs and service endpoints   |
+| MongoDB            | Persistent data storage           |
+| Mongoose 9         | MongoDB schemas and data modeling |
+| Redis              | Caching and fast data access      |
+| ioredis            | Redis client for Node.js          |
+| Firebase Admin SDK | Server-side Firebase operations   |
+| Axios              | Inter-service HTTP communication  |
+| Nodemailer         | Email delivery                    |
+| Multer             | File upload handling              |
+| pdf-parse          | PDF text extraction               |
+| Razorpay           | Payment integration               |
+| dotenv             | Environment configuration         |
 
 ### AI and LLM
-| Technology | Purpose |
-|---|---|
-| LangChain Core | LLM application building blocks |
+
+| Technology     | Purpose                             |
+| -------------- | ----------------------------------- |
+| LangChain Core | LLM application building blocks     |
 | LangChain Groq | Integration with Groq-hosted models |
-| LangGraph | Graph-based AI workflows |
-| Groq API | Language model inference |
+| LangGraph      | Graph-based AI workflows            |
+| Groq API       | Language model inference            |
 
 ### Infrastructure and Development
+
 - Docker
 - Docker Compose
 - Microservices architecture
@@ -150,14 +162,14 @@ flowchart TD
 
 ### Service Responsibilities
 
-| Service | Responsibility |
-|---|---|
-| API Gateway | Central entry point and request routing |
+| Service                | Responsibility                                                   |
+| ---------------------- | ---------------------------------------------------------------- |
+| API Gateway            | Central entry point and request routing                          |
 | Authentication Service | User authentication, account operations and related integrations |
-| Billing Service | Payment processing and credit management |
-| Resume Service | Resume uploads, PDF extraction and AI-powered resume analysis |
-| Interview Service | AI interview question generation and answer evaluation |
-| Roadmap Service | Personalized learning roadmaps and skill-gap recommendations |
+| Billing Service        | Payment processing and credit management                         |
+| Resume Service         | Resume uploads, PDF extraction and AI-powered resume analysis    |
+| Interview Service      | AI interview question generation and answer evaluation           |
+| Roadmap Service        | Personalized learning roadmaps and skill-gap recommendations     |
 
 ### Why Microservices?
 
@@ -172,6 +184,7 @@ flowchart TD
 ## 🔄 How It Works
 
 ### Resume Analysis
+
 1. The user uploads a PDF resume.
 2. The resume service receives the file through an upload endpoint.
 3. PDF text is extracted for processing.
@@ -179,6 +192,7 @@ flowchart TD
 5. Results and suggestions are returned to the frontend and persisted as configured.
 
 ### AI Interview Preparation
+
 1. The user selects a technology stack or interview context.
 2. The interview service prepares relevant questions.
 3. The user submits answers.
@@ -186,12 +200,14 @@ flowchart TD
 5. Interview results can be stored for future reference.
 
 ### Learning Roadmap Generation
+
 1. The user chooses a target technology stack.
 2. The roadmap service processes the selected stack and available skill information.
 3. The AI workflow generates a structured learning plan.
 4. The roadmap is returned to the frontend for presentation.
 
 ### Credit Purchase
+
 1. The user selects an available credit package.
 2. The backend creates a payment order.
 3. Razorpay handles the payment flow.
@@ -202,33 +218,52 @@ flowchart TD
 
 ## 📁 Project Structure
 
-The application is organized into frontend and backend components, with separate services for major business features.
-
-```text
+```
 Elevora/
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   ├── pages/          # Application pages
-│   │   ├── redux/          # Redux Toolkit state
-│   │   ├── routes/         # Routing configuration
-│   │   └── ...
-│   └── package.json
+├── backend/
+│   ├── gateway/                 # API gateway
+│   ├── services/
+│   │   ├── auth/                # Authentication service
+│   │   ├── billing/             # Payments and credit management
+│   │   ├── interview/           # AI interview workflows
+│   │   ├── resume/              # Resume processing and analysis
+│   │   └── roadmap/             # AI-powered learning roadmaps
+│   ├── shared/                  # Shared backend modules/utilities
+│   ├── docker-compose.yml       # Backend services orchestration
+│   ├── package.json
+│   ├── package-lock.json
+│   └── .dockerignore
 │
-├── services/
-│   ├── auth/               # Authentication service
-│   ├── billing/            # Payments and credits
-│   ├── resume/             # Resume processing and analysis
-│   ├── interview/          # AI interview workflows
-│   ├── roadmap/            # AI roadmap generation
-│   └── gateway/             # API gateway
+├── frontend/
+│   ├── public/                  # Static public assets
+│   ├── src/                     # React application source
+│   ├── index.html               # Frontend HTML entry point
+│   ├── vite.config.js           # Vite configuration
+│   ├── eslint.config.js         # ESLint configuration
+│   ├── Dockerfile               # Frontend container image
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .env                     # Local environment variables (not committed)
+│   ├── .dockerignore
+│   └── README.md
 │
-├── docker-compose.yml      # Multi-container configuration
+├── docker-compose.yml            # Root-level orchestration
+├── package.json                 # Root package configuration
+├── package-lock.json
 ├── .gitignore
-└── README.md
+└── .dockerignore
 ```
 
-*This is a representative structure. Adjust the directory names to match the actual repository before publishing.*
+### Directory Overview
+
+- **`frontend/`** — React 19 application built with Vite, Tailwind CSS and other UI libraries.
+- **`backend/gateway/`** — Entry point for routing frontend API requests to the appropriate backend services.
+- **`backend/services/`** — Independent services for authentication, billing, resume analysis, interviews and roadmap generation.
+- **`backend/shared/`** — Common backend utilities and modules shared across services.
+- **`backend/docker-compose.yml`** — Backend-level container orchestration.
+- **Root `docker-compose.yml`** — Main orchestration configuration for running the application.
+- **`frontend/Dockerfile`** — Instructions for building the frontend container image.
+- **`.gitignore` and `.dockerignore`** — Exclude files from Git tracking and Docker build contexts, respectively.
 
 ---
 
@@ -265,16 +300,16 @@ Create the environment files required by the frontend, gateway and individual ba
 
 Typical configuration values may include:
 
-| Configuration | Purpose |
-|---|---|
-| MongoDB connection URI | Connect services to MongoDB |
-| Redis connection URI | Connect services to Redis |
-| Groq API key | Enable AI model requests |
-| Firebase project configuration | Configure Firebase integration |
-| Razorpay key ID and secret | Configure payment processing |
-| SMTP host and credentials | Enable email delivery |
-| Service ports and URLs | Configure service communication |
-| Frontend origin | Configure CORS and browser access |
+| Configuration                  | Purpose                           |
+| ------------------------------ | --------------------------------- |
+| MongoDB connection URI         | Connect services to MongoDB       |
+| Redis connection URI           | Connect services to Redis         |
+| Groq API key                   | Enable AI model requests          |
+| Firebase project configuration | Configure Firebase integration    |
+| Razorpay key ID and secret     | Configure payment processing      |
+| SMTP host and credentials      | Enable email delivery             |
+| Service ports and URLs         | Configure service communication   |
+| Frontend origin                | Configure CORS and browser access |
 
 Use the actual variable names defined by each service's code. Check the service configuration and environment-variable references before creating the files.
 
@@ -420,19 +455,11 @@ Interested in building scalable web applications, AI-powered products and cloud-
 
 ### Connect With Me
 
-- GitHub: [Your GitHub Profile](https://github.com/)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/)
-
-Replace the profile links above with your actual profile URLs.
+- GitHub: [https://github.com/RiteshBarapatre](https://github.com/RiteshBarapatre)
+- LinkedIn: [https://www.linkedin.com/in/ritesh-barapatre-1a373b232/](https://www.linkedin.com/in/ritesh-barapatre-1a373b232/)
 
 ---
 
-## 📄 License
-
-Add a `LICENSE` file to the repository if you intend to distribute the project under an open-source license. Until a license is selected, all rights remain with the copyright holder.
-
----
-
-<p align="center">
-  <strong>Elevora — Learn. Practice. Improve. Get Career-Ready. 🚀</strong>
-</p>
+\<p align="center">
+&#x20; \<strong>Elevora — Learn. Practice. Improve. Get Career-Ready. 🚀\</strong>
+\</p>
